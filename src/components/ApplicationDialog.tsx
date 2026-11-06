@@ -53,7 +53,7 @@ export function ApplicationDialog({ open, phone, onPhoneChange, onClose }: Props
       <div className="dialog-progress" role="progressbar" aria-label="Прогресс заявки" aria-valuemin={0} aria-valuemax={100} aria-valuenow={step === 1 ? 0 : step === 3 ? 100 : 50}><span /></div>
       <button type="button" className="dialog-link dialog-close" onClick={close}>Закрыть</button>
     </nav>}
-    {step === 4 ? <LoadingStep /> : <section className="dialog-content">
+    {step === 4 ? <LoadingStep onClose={close} /> : <section className="dialog-content">
       <h2 id="application-heading" ref={heading} tabIndex={-1}>{step === 1 ? 'Оставьте свои контакты, чтобы открыть счет' : 'Подтвердите мобильный телефон'}</h2>
       {step === 1 ? <form className="dialog-form" onSubmit={event => { event.preventDefault(); setAttempted(true); if (valid) goToStep(2); }}>
         <div className="dialog-fields"><Input label="Телефон" type="tel" inputMode="tel" autoComplete="off" value={phone} error={attempted && phone.replace(/\D/g, '').length !== 11 ? 'Укажите номер телефона' : undefined} onChange={event => onPhoneChange(formatPhone(event.target.value))} /><PartyInput value={company} error={attempted && !company.trim() ? 'Укажите название компании или ИНН' : undefined} onChange={next => { setCompany(next); setInn(''); }} onSelect={selectParty} />{inn && <Input label="ИНН" inputMode="numeric" autoComplete="off" value={inn} onChange={event => setInn(event.target.value.replace(/\D/g, '').slice(0, 12))} />}<FullNameInput value={name} error={attempted && !name.trim() ? 'Укажите фамилию, имя и отчество' : undefined} onChange={setName} /></div>
