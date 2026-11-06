@@ -1,0 +1,76 @@
+.application-input .tb-field,.dialog-fields .tb-field,.sms-input .tb-field{width:100%!important}
+.tb-button,.tb-field{font-family:dsText,Arial,sans-serif}
+.tb-button span,.tb-field label,.tb-field input{font-family:dsText,Arial,sans-serif!important}
+.application-dialog{position:fixed;inset:0;width:100%;max-width:none;height:100dvh;max-height:none;margin:0;padding:0 48px 48px;border:0;background:#fff;color:rgba(0,0,0,.8);overflow:auto;animation:dialog-enter 320ms ease-out}
+.application-dialog::backdrop{background:rgba(0,0,0,.2)}
+.application-dialog.is-closing{animation:dialog-exit 260ms ease-in forwards;pointer-events:none}
+.dialog-navigation{height:64px;width:720px;margin:auto;display:grid;grid-template-columns:1fr 1fr 1fr;align-items:center;gap:20px}
+.dialog-link{border:0;background:transparent;padding:0;color:#126df7;font-size:17px;line-height:28px;display:flex;align-items:center;height:64px}
+.dialog-close{justify-self:end}.dialog-back-icon{width:16px;height:16px;margin-right:2px;background:#126df7;mask:url('/assets/form-chevron-left.svg') no-repeat center / 16px 16px}
+.dialog-progress{width:140px;height:8px;background:rgba(0,16,36,.06);border-radius:20px;overflow:hidden;justify-self:center}
+.dialog-progress span{display:block;width:50%;height:100%;background:#428bf9;border-radius:999px;transition:width 500ms ease-in-out}
+.dialog-progress[aria-valuenow="0"] span{width:0}
+.dialog-progress[aria-valuenow="100"] span{width:100%}
+.research-field{position:relative}.research-field .tb-field{width:100%!important}
+.research-field .tb-field-control:focus-visible{outline:none}
+.research-field .tb-field{background-color:var(--tb-figma-7ca07319987c)!important;box-shadow:none!important}
+/* Source: dfRHWv9jKbvRbRKPjReJTR, 11460:1571/1584/1622/1656.
+   The cursor image in the design represents the native text caret. */
+.research-field .tb-field:focus-within{background-color:#fff!important;box-shadow:inset 0 0 0 1px #000!important}
+.research-field[data-invalid="true"] .tb-field{background-color:rgba(224,31,25,.12)!important}
+/* User-approved prototype error hover, 2026-11-05: double the red alpha. */
+@media(hover:hover) and (pointer:fine){
+  .research-field[data-invalid="true"] .tb-field[data-prototype-motion="true"]:hover:not(:focus-within):not(:has(input:disabled)){background-color:rgba(224,31,25,.24)!important}
+}
+.research-field[data-invalid="true"] .tb-field:focus-within{background-color:#fff!important;box-shadow:inset 0 0 0 1px #f52222!important}
+.research-field[data-invalid="true"] .tb-field-label,.research-field .tb-field:focus-within .tb-field-label{color:rgba(0,0,0,.8)!important}
+.research-field input[type="tel"]{color:#333!important}
+.phone-mask{position:absolute;left:16px;top:28px;height:20px;font-family:dsText,Arial,sans-serif;font-weight:400;letter-spacing:0;line-height:20px;font-size:15px;color:#333;pointer-events:none;white-space:pre}
+.mask-remaining{color:rgb(51 51 51 / 48%)}.mask-entered{color:transparent}
+.field-message{font-size:13px;line-height:20px;margin-top:4px;color:#e31c1c}
+.dialog-content{width:720px;margin:32px auto 0}
+.dialog-content h2{font-size:36px;font-weight:500;line-height:40px;text-align:left;margin:0;max-width:none;font-feature-settings:'liga' 0;outline:none}
+.dialog-form{margin-top:32px}.dialog-fields{display:flex;flex-direction:column;gap:20px}.dialog-form>.tb-button{margin-top:32px}
+.sms-step>p{margin-top:8px}.sms-input{width:257px;margin-top:32px}.sms-actions{margin-top:20px;display:flex;flex-direction:column;align-items:flex-start}
+.sms-input{position:relative}.sms-mask{position:absolute;left:16px;top:28px;pointer-events:none;white-space:pre;font:400 15px/20px dsText,Arial,sans-serif}
+.sms-input input:disabled{cursor:default;-webkit-text-fill-color:currentColor;opacity:1}
+.sms-link{background:transparent;border:0;border-radius:8px;padding:8px 2px;min-height:32px;font-size:13px;line-height:16px;color:#126df7}
+.visually-hidden{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.fullname-autocomplete,.party-autocomplete{position:relative}
+.fullname-ghost{position:absolute;top:28px;left:16px;right:16px;height:20px;overflow:hidden;pointer-events:none;white-space:pre;font:400 15px/20px dsText,Arial,sans-serif;letter-spacing:0;color:rgba(51,51,51,.48)}
+.fullname-ghost>span{display:block;width:max-content}.ghost-entered{color:transparent}
+/* Figma 11460:11087; shared dropdown shell: 5 visible names or 4 visible parties, at most 10 results. */
+.autocomplete-dropdown{position:absolute;z-index:10;top:calc(100% + 4px);left:0;width:100%;padding:8px;display:flex;flex-direction:column;gap:2px;overflow-y:auto;overscroll-behavior:contain;background:#fff;border:1px solid rgba(0,16,36,.12);border-radius:12px;box-shadow:0 5px 20px rgba(0,0,0,.1);scrollbar-width:thin;scrollbar-color:#c4c4c4 transparent}
+.autocomplete-dropdown--names{max-height:226px}.autocomplete-dropdown--parties{max-height:346px}
+.autocomplete-option{flex-shrink:0;border-radius:8px;font-size:15px;line-height:20px;cursor:pointer;transition:background-color 180ms ease-out}
+.autocomplete-option--names{min-height:40px;padding:10px 8px}
+.autocomplete-option--parties{min-height:80px;padding:10px 8px;display:flex;flex-direction:column;color:rgba(0,0,0,.48)}
+.party-option-name{color:rgba(0,0,0,.8)}
+.autocomplete-option:hover,.autocomplete-option.is-active{background:rgba(36,74,127,.06)}
+@media(prefers-reduced-motion:reduce){.autocomplete-option{transition:none}}
+@keyframes dialog-enter{from{opacity:0;transform:translateY(32px)}to{opacity:1;transform:translateY(0)}}
+@keyframes dialog-exit{to{opacity:0;transform:translateY(24px)}}
+@media(prefers-reduced-motion:reduce){.application-dialog,.application-dialog.is-closing{animation:none}.dialog-progress span{transition:none}}
+.loading-step{min-height:calc(100dvh - 48px);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:64px 48px;border-radius:24px;text-align:center}
+.loading-circle{position:relative;width:144px;height:144px;flex-shrink:0;margin-bottom:32px}
+.loading-track,.loading-ring{position:absolute;inset:0;width:144px;height:144px}
+.loading-ring{transform:rotate(-90deg)}
+.loading-clock{position:absolute;left:36px;top:36px;width:72px;height:72px;background:#428bf9;mask:url('/assets/loading-clock-mask.svg') no-repeat 3px 3px / 66px 66px}
+.loading-time{font:500 28px/32px dsHeading,Arial,sans-serif;color:rgba(0,0,0,.8);margin:0}
+.loading-caption{font:400 15px/24px dsText,Arial,sans-serif;color:rgba(0,0,0,.54);margin:16px 0 0}
+.hero--inline .hero-art{height:auto;min-height:100%;align-self:stretch}
+.hero--inline .hero-art img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top}
+.inline-application{position:relative}.inline-progress{height:8px;overflow:hidden;border-radius:20px;background:rgba(0,16,36,.06);margin-bottom:20px}
+.inline-progress span{display:block;width:0;height:100%;background:#428bf9;border-radius:999px;transition:width 500ms ease-in-out}
+.inline-progress.is-completing{animation:inline-progress-hide 150ms ease-out 500ms forwards}
+@keyframes inline-progress-hide{to{opacity:0}}
+.inline-fields{display:flex;flex-direction:column;gap:20px}.inline-back{padding:0;background:transparent;color:#126df7;font-size:15px;line-height:24px;align-self:center}
+.inline-sms-copy{display:flex;flex-direction:column;gap:8px}.inline-sms-copy>p:first-child{font-weight:500}
+.inline-sms .sms-input{width:294px;max-width:100%;margin-top:20px}.inline-sms .sms-actions{margin-top:20px}.inline-sms+.inline-back{margin-top:20px}
+.inline-application .loading-step{min-height:360px;padding:32px 0}.inline-application .form-bottom{align-items:center}
+@media(prefers-reduced-motion:reduce){.inline-progress span{transition:none}}
+.inline-loading{min-height:216px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.inline-loading-timer{position:relative;width:124px;height:46px;display:grid;place-items:center;margin-bottom:20px;font:500 20px/24px dsHeading,Arial,sans-serif;color:rgba(0,0,0,.54)}
+.inline-loading-timer svg{position:absolute;inset:0;width:124px;height:46px}.inline-loading-timer rect{stroke-linecap:round}.inline-loading-timer .is-running{animation:yellow-orbit 1800ms linear infinite}
+.inline-loading h3{font:500 24px/28px dsHeading,Arial,sans-serif;margin:0}.inline-loading>p{font:400 15px/24px dsText,Arial,sans-serif;color:rgba(0,0,0,.54);margin-top:8px}
+@keyframes yellow-orbit{to{stroke-dashoffset:-100}}

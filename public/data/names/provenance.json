@@ -1,0 +1,24 @@
+{
+  "author": "Ivan Begtin / Infoculture",
+  "source": "https://zenodo.org/records/2747011",
+  "doi": "10.5281/zenodo.2747011",
+  "archiveMD5": "10b4bf03e1eea33f72d4284fd2a582b9",
+  "recordLicense": "CC-BY-4.0",
+  "descriptionLicense": "CC-BY-SA (version unspecified)",
+  "derivedLicense": "CC-BY-SA-4.0",
+  "changes": "Filtered malformed and singleton rows; normalized case and Unicode; deduplicated including е/ё; summed source counts; selected top counts; retained gender and fname as baseNames. No generated values. Base names identify the parent name, not the applicant name.",
+  "counts": {
+    "surnames": {
+      "exported": 3000,
+      "rejectedRows": 172264
+    },
+    "names": {
+      "exported": 1000,
+      "rejectedRows": 21013
+    },
+    "midnames": {
+      "exported": 1000,
+      "rejectedRows": 31647
+    }
+  }
+}

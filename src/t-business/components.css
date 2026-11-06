@@ -1,0 +1,51 @@
+@import './tokens.css';
+
+.tb-button {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  margin: 0;
+  cursor: pointer;
+  text-decoration: none;
+  vertical-align: middle;
+}
+.tb-button:disabled { cursor: default; }
+.tb-button-label-box { box-sizing: border-box; display: inline-flex; align-items: center; }
+.tb-field { box-sizing: border-box; position: relative; }
+.tb-field-label { box-sizing: border-box; position: absolute; pointer-events: none; }
+.tb-field-control {
+  box-sizing: border-box;
+  position: absolute;
+  min-width: 0;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
+  outline: none;
+  background: transparent;
+  appearance: none;
+}
+.tb-field-control::placeholder { opacity: 1; color: var(--tb-placeholder-color); }
+
+/* User-approved prototype settings, not original Figma/site motion tokens. */
+[data-prototype-motion="true"] {
+  --tb-prototype-motion-duration: 180ms;
+  --tb-prototype-motion-easing: ease-out;
+  --tb-prototype-input-hover-background: rgba(36, 74, 127, 0.10);
+  transition: background-color var(--tb-prototype-motion-duration) var(--tb-prototype-motion-easing);
+}
+[data-prototype-motion="true"] .tb-field-label {
+  transform-origin: top left;
+  transition: color var(--tb-prototype-motion-duration) var(--tb-prototype-motion-easing);
+}
+@media (hover: hover) and (pointer: fine) {
+  .tb-field[data-prototype-motion="true"]:hover:not(:focus-within) {
+    background-color: var(--tb-prototype-input-hover-background) !important;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-prototype-motion="true"],
+  [data-prototype-motion="true"] .tb-field-label { transition: none; }
+}

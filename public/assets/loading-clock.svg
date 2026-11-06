@@ -1,0 +1,25 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="tui-ic-medium / mountains-flag">
+<mask id="mask0_0_225" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="2" y="0" width="38" height="34">
+<g id="Mask">
+<path id="Mask_2" d="M23.3703 23.7568L28.3333 16.6667L37.2464 29.3997C38.4063 31.0566 37.2209 33.3333 35.1984 33.3333H31.7465C30.6527 33.3333 29.6285 32.7967 29.0059 31.8973L23.3703 23.7568Z" fill-rule="evenodd" clip-rule="evenodd" fill="url(#paint0_linear_0_225)"/>
+<path id="Mask_3" d="M15.0001 11.6667H15.0004L15.0306 11.7103L15.0001 11.6667L15.0001 11.6667ZM20.7695 20H9.23092L2.71609 29.4103C1.56819 31.0684 2.75491 33.3333 4.77157 33.3333H31.7465C30.6527 33.3333 29.6285 32.7967 29.0059 31.8973L20.7695 20Z" fill-rule="evenodd" clip-rule="evenodd" fill="black"/>
+<path id="Mask_4" d="M15 11.6667L20.8333 20H9.16667L15 11.6667Z" fill="url(#paint1_linear_0_225)"/>
+<path id="Mask_5" d="M28.3333 5.83333L15 0V11.6667L28.3333 5.83333Z" fill="black"/>
+</g>
+</mask>
+<g mask="url(#mask0_0_225)">
+<path id="Color" d="M0 0H40V40H0V0Z" fill="#428BF9"/>
+</g>
+</g>
+<defs>
+<linearGradient id="paint0_linear_0_225" x1="20.5556" y1="17.5" x2="40.963" y2="31.9757" gradientUnits="userSpaceOnUse">
+<stop stop-color="#333333" stop-opacity="0.4"/>
+<stop offset="1" stop-color="#333333" stop-opacity="0.3"/>
+</linearGradient>
+<linearGradient id="paint1_linear_0_225" x1="20.8333" y1="17.2222" x2="9.16667" y2="17.2222" gradientUnits="userSpaceOnUse">
+<stop stop-opacity="0.55"/>
+<stop offset="1" stop-opacity="0.35"/>
+</linearGradient>
+</defs>
+</svg>
