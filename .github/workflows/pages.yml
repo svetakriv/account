@@ -1,0 +1,66 @@
+name: Publish GitHub Pages
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: github-pages
+  cancel-in-progress: true
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install static build dependencies
+        run: |
+          mkdir -p .pages-tools
+          echo '{"private":true}' > .pages-tools/package.json
+          npm install --prefix .pages-tools --no-audit --no-fund vite@6.3.0 @vitejs/plugin-react@4.4.1 react@19.0.0 react-dom@19.0.0
+          ln -s .pages-tools/node_modules node_modules
+      - name: Prepare static pages
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import shutil
+          root = Path('.pages-source')
+          shutil.copytree('src', root/'src')
+          shutil.copytree('public', root/'public')
+          for p in (root/'src').rglob('*'):
+              if not p.is_file() or p.suffix not in ['.tsx','.ts','.jsx','.js','.mjs','.css']: continue
+              text = p.read_text().replace('/assets/','/account/assets/').replace('/data/names/','/account/data/names/')
+              if p.name == 'PartyInput.tsx':
+                  start = text.index("const response = await fetch('/api/party-suggestions'")
+                  end = text.index('\n        });',start) + len('\n        });')
+                  text = text[:start] + 'const response = new Response(JSON.stringify({ suggestions: [] }), { status: 200 });' + text[end:]
+                  text = text.replace('Организация не найдена. Можно ввести ИНН вручную','Введите ИНН вручную. Поиск организаций недоступен в этой версии')
+                  assert "fetch('/api/" not in text
+              p.write_text(text)
+          (root/'main.tsx').write_text("import React from 'react';\nimport { createRoot } from 'react-dom/client';\nimport { App } from './src/App';\nimport './src/t-business/tokens.css';\nimport './src/t-business/components.css';\nimport './src/styles.css';\nimport './src/application-dialog.css';\nconst steps = location.pathname.split('/').filter(Boolean).at(-1) === 'steps';\ncreateRoot(document.getElementById('root')!).render(<App variant={steps ? 'b' : 'a'} />);")
+          (root/'index.html').write_text('<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Расчетный счет в Т-Банке</title><link rel="icon" href="/account/assets/favicon-32x32.png"></head><body><div id="root"></div><script type="module" src="/main.tsx"></script></body></html>')
+          PY
+          cat > pages.config.mjs <<'JS'
+          import { defineConfig } from 'vite';
+          import react from '@vitejs/plugin-react';
+          export default defineConfig({root: '.pages-source', base: '/account/', plugins: [react()], css: {postcss: {plugins: []}}, build: {outDir: '../pages-dist', emptyOutDir: true}});
+          JS
+          node node_modules/vite/bin/vite.js build --config pages.config.mjs
+          mkdir -p pages-dist/reformer pages-dist/steps
+          cp pages-dist/index.html pages-dist/reformer/index.html
+          cp pages-dist/index.html pages-dist/steps/index.html
+          touch pages-dist/.nojekyll
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: pages-dist
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
