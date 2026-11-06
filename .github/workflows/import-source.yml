@@ -10,12 +10,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-      - name: Extract source update
+      - name: Extract exact success icon update
         run: |
-          unzip -o completion-update.zip
-          git rm completion-update.zip
+          unzip -o success-icon-fix.zip
+          git rm success-icon-fix.zip
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add src/components/LoadingStep.tsx src/components/ApplicationDialog.tsx src/application-dialog.css public/assets/application-success-check.svg
-          git commit -m "Show Figma completion screen after five seconds in both forms"
+          git add src/components/LoadingStep.tsx src/application-dialog.css public/assets/application-success-check.svg
+          git commit -m "Use exact Figma check icon in application success screens"
           git push
