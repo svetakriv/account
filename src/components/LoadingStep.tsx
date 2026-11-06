@@ -19,7 +19,7 @@ export function LoadingStep({ variant = 'fullscreen', onClose }: { variant?: 'fu
   if (progress >= 1) return <>
     {variant === 'fullscreen' && onClose && <nav className="success-close-navigation" aria-label="Навигация заявки"><button type="button" className="dialog-link dialog-close" onClick={onClose}>Закрыть</button></nav>}
     <section className={`application-success application-success--${variant}`} aria-label="Заявка принята" role="status">
-      <div className="application-success-icon" aria-hidden="true"><img src="/assets/application-success-check.svg" alt="" /></div>
+      <div className="application-success-icon" aria-hidden="true"><span className="application-success-check" /></div>
       <div className="application-success-copy"><h2 id={variant === 'fullscreen' ? 'application-heading' : undefined}>Ваша заявка принята</h2><p>Отследить ее статус можно в личном кабинете</p></div>
     </section>
   </>;
