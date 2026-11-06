@@ -38,10 +38,7 @@ jobs:
               if not p.is_file() or p.suffix not in ['.tsx','.ts','.jsx','.js','.mjs','.css']: continue
               text = p.read_text().replace('/assets/','/account/assets/').replace('/data/names/','/account/data/names/')
               if p.name == 'PartyInput.tsx':
-                  start = text.index("const response = await fetch('/api/party-suggestions'")
-                  end = text.index('\n        });',start) + len('\n        });')
-                  text = text[:start] + 'const response = new Response(JSON.stringify({ suggestions: [] }), { status: 200 });' + text[end:]
-                  text = text.replace('Организация не найдена. Можно ввести ИНН вручную','Введите ИНН вручную. Поиск организаций недоступен в этой версии')
+                  text = text.replace("fetch('/api/party-suggestions'", "fetch('https://functions.yandexcloud.net/d4eqk87bssfh8rjm68n2'")
                   assert "fetch('/api/" not in text
               p.write_text(text)
           (root/'main.tsx').write_text("import React from 'react';\nimport { createRoot } from 'react-dom/client';\nimport { App } from './src/App';\nimport './src/t-business/tokens.css';\nimport './src/t-business/components.css';\nimport './src/styles.css';\nimport './src/application-dialog.css';\nconst steps = location.pathname.split('/').filter(Boolean).at(-1) === 'steps';\ncreateRoot(document.getElementById('root')!).render(<App variant={steps ? 'b' : 'a'} />);")
